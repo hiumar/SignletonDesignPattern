@@ -10,11 +10,19 @@ namespace ConsoleApp1
     {
        private static int Counter = 0;
        private static Signleton instenace = null;
+       private static readonly Object obj = new object();
        public static Signleton GetInstance
         {
             get
-            { if (instenace == null)
-                    instenace = new Signleton();
+            {
+                if (instenace == null)
+                {
+                    lock (obj)
+                    {
+                        if (instenace == null)
+                            instenace = new Signleton();
+                    }
+                }
                 return instenace;
                
             }

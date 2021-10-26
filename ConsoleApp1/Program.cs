@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -6,13 +7,23 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Signleton signleton = Signleton.GetInstance;
-            signleton.PrintDetails("This is first signleton object");
-           
+            //this is used for multi threading
+            //inviournment
+            Parallel.Invoke(() => GetDeveloper(), () => GetStudent());
+          
+        }
 
+        private static void GetDeveloper()
+        {
             Signleton developer = Signleton.GetInstance;
             developer.PrintDetails("developer");
             Console.ReadLine();
+        }
+
+        private static void GetStudent()
+        {
+            Signleton signleton = Signleton.GetInstance;
+            signleton.PrintDetails("This is student object class");
         }
     }
 }
