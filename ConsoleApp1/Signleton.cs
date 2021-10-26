@@ -19,13 +19,10 @@ namespace ConsoleApp1
                
             }
         }
-
-
        private  Signleton()
         {
             Counter++;
             Console.WriteLine("this is constructor"+Counter.ToString());
-
 
         }
         public void PrintDetails(string message)
